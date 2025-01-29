@@ -4,53 +4,53 @@
 </head>
 <body>
 
-    <form action="action_page.php" method="POST">
+    <form method="POST" name="google-sheet">
 
         <div>
             <label for="fname">first name:</label>
-            <input type="text" id="fname" name="fname" placeholder="KRANTHI" required>
+            <input type="text" id="fname" name="First Name" placeholder="KRANTHI" required>
         </div>
 
         <br>
 
         <div>
             <label for="lname">last name:</label>
-            <input type="text" id="lname" name="lname" placeholder="THOTA" required>
+            <input type="text" id="lname" name="Last Name" placeholder="THOTA" required>
         </div>
 
         <br>
 
         <div>
             <label for="pass">password:</label>
-            <input type="password" id="pass" name="pass" maxlength="12" required>
+            <input type="password" id="pass" name="Password" maxlength="12" required>
         </div>
 
         <br>
 
         <div>
             <label for="email">email:</label>
-            <input type="email" id="email" name="email" placeholder="Saikiran@gmail.com">
+            <input type="email" id="email" name="Email" placeholder="Saikiran@gmail.com">
         </div>
 
         <br>
 
         <div>
             <label for="phone">phone #:</label>
-            <input type="tel" id="phone" name="phone" placeholder="(123)-456-7890">
+            <input type="tel" id="phone" name="Phone" placeholder="(123)-456-7890">
         </div>
 
         <br>
 
         <div>
             <label for="bdate">birthdate:</label>
-            <input type="date" id="bdate" name="bdate">
+            <input type="date" id="Birthdate" name="bdate">
         </div>
         
         <br>
 
         <div>
             <label for="quantity">quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="0" max="99" value="1">
+            <input type="number" id="quantity" name="Quantity" min="0" max="99" value="1">
         </div>
         
         <br>
@@ -88,10 +88,23 @@
         <br>
 
         <div>
-            <input type="submit">
+            <input type="submit" value= "submit" name="submit">
         </div>
 
     </form>
 
+
+    
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwhRzvl9remPpn3CMKfKrI2077bEKfk3b_wmxqsAGct-lj9wk8eIamOEXNIkR7mY4Dv/exec'
+    const form = document.forms['google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
 </body>
 </html>
